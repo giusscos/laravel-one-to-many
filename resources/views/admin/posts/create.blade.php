@@ -4,7 +4,7 @@
     <div class="container">
         <div class="d-flex pb-3">
             <h3 class="text-capitalize">
-                Aggiungi posts
+                Aggiungi post
             </h3>
             <a class="text-capitalize btn btn-danger ml-auto" href="{{ route('admin.posts.index') }}">
                 Annulla
