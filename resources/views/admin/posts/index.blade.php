@@ -6,7 +6,7 @@
             <h3 class="text-capitalize">
                 Elenco posts
             </h3>
-            <a class="text-capitalize btn btn-primary ml-auto" href="{{route('admin.post.create')}}">
+            <a class="text-capitalize btn btn-primary ml-auto" href="{{ route('admin.posts.create') }}">
                 Aggiungi post
             </a>
         </div>
@@ -31,8 +31,16 @@
                     <td> {{ $post->slug }} </td>
                     <td> {{ $post->created_at }} </td>
                     <td> {{ $post->updated_at }} </td>
-                    <td><a href="{{route('admin.post.show', $post)}}">Scopri</a></td>
-                    <td></td>
+                    <td><a href="{{ route('admin.posts.show', $post) }}" class="btn btn-primary">Scopri</a></td>
+                    <td>
+                        <form action="{{ route('admin.posts.destroy', $post) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">
+                                Elimina
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </table>

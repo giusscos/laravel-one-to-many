@@ -16,10 +16,17 @@
                     </span>
                 </div>
             </div>
-            <div class="col-2">
-                <a href="{{ route('admin.post.index') }}" class="btn btn-primary">
+            <div class="col-2 d-flex flex-column align-items-end">
+                <a href="{{ route('admin.posts.index') }}" class="btn btn-primary mb-3">
                     Torna alla tabella
                 </a>
+                <form action="{{route('admin.posts.destroy', $post)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">
+                        Elimina Post
+                    </button>
+                </form>
             </div>
         </div>
         <div class="row">

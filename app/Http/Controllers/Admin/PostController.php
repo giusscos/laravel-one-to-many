@@ -17,7 +17,7 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
-        return view('admin.post.index', compact('posts'));
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -27,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.post.create');
+        return view('admin.posts.create');
     }
 
     /**
@@ -46,7 +46,7 @@ class PostController extends Controller
         $params['slug'] = str_replace(' ', '-', $params['title']);
 
         $post = Post::create($params);
-        
+
         return redirect()->route('admin.posts.show', $post);
     }
 
@@ -58,7 +58,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('admin.post.show', compact('post'));
+        return view('admin.posts.show', compact('post'));
     }
 
     /**
@@ -92,6 +92,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('admin.posts.index');
     }
 }

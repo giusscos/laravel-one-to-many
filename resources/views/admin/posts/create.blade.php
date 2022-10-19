@@ -6,13 +6,13 @@
             <h3 class="text-capitalize">
                 Aggiungi posts
             </h3>
-            <a class="text-capitalize btn btn-danger ml-auto" href="{{ route('admin.post.index') }}">
+            <a class="text-capitalize btn btn-danger ml-auto" href="{{ route('admin.posts.index') }}">
                 Annulla
             </a>
         </div>
     </div>
     <div class="container">
-        <form action={{ route('admin.post.store') }} method="POST">
+        <form action={{ route('admin.posts.store') }} method="POST">
             @csrf
             <div class="form-group">
                 <label for="title">Titolo</label>
