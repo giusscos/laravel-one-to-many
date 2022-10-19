@@ -20,8 +20,7 @@
             </div>
             <div class="form-group">
                 <label for="content">Contenuto</label>
-                <textarea class="form-control" id="content" name="content">
-            </textarea>
+                <textarea rows="10" class="form-control" id="content" name="content"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Aggiungi</button>
         </form>

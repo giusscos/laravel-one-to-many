@@ -22,6 +22,7 @@
                     <th>Aggiornato il</th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             @foreach ($posts as $post)
@@ -32,6 +33,7 @@
                     <td> {{ $post->created_at }} </td>
                     <td> {{ $post->updated_at }} </td>
                     <td><a href="{{ route('admin.posts.show', $post) }}" class="btn btn-primary">Scopri</a></td>
+                    <td><a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-primary">Modifica</a></td>
                     <td>
                         <form action="{{ route('admin.posts.destroy', $post) }}" method="POST">
                             @csrf

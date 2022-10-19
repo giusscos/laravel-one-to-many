@@ -23,12 +23,6 @@
                 <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-primary text-capitalize mb-2">
                     Modifica post
                 </a>
-                {{-- <form action="{{route('admin.posts.edit', $post)}}" method="">
-                    @csrf
-                    <button type="submit" class="btn btn-primary text-capitalize mb-2">
-                        Modifica post
-                    </button>
-                </form> --}}
                 <form action="{{ route('admin.posts.destroy', $post) }}" method="POST">
                     @csrf
                     @method('DELETE')
