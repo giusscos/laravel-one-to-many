@@ -1,7 +1,9 @@
 <?php
 
+use App\Category;
 use App\Post;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 class PostSeeder extends Seeder
 {
@@ -12,11 +14,16 @@ class PostSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i < 50; $i++) {
+
+        $categoryIds = Category::all()->pluck('id');
+
+        for ($i = 0; $i < 100; $i++) {
             $post = new Post();
+            
             $post->title = $faker->words(rand(5, 10), true);
             $post->content = $faker->paragraphs(rand(10, 20), true);
-            $post->slug = str_replace(' ', '-', $post->title);
+            $post->slug = Str::slug($post->title);
+            $post->category_id = $faker->optional()->randomElement($categoryIds);
 
             $post->save();
         }
