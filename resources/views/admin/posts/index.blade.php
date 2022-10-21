@@ -32,7 +32,7 @@
                         <td> {{ $post->id }} </td>
                         <td> {{ $post->title }} </td>
                         <td> {{ $post->slug }} </td>
-                        <td> {{ $post->category ? $post->category->name: 'Nessuna Categoria' }} </td>
+                        <td> {{ $post->category ? $post->category->name : 'Nessuna Categoria' }} </td>
                         <td> {{ $post->created_at }} </td>
                         <td> {{ $post->updated_at }} </td>
                         <td><a href="{{ route('admin.posts.show', $post) }}" class="btn btn-primary">Scopri</a></td>
