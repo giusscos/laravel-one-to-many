@@ -20,10 +20,23 @@
                 <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
                     value="{{ old('title', $post->title) }}">
                 @error('title')
-                    <div class="mt-2">
-                        <span class="danger">
-                            {{ $message }}
-                        </span>
+                    <div class="alert alert-danger mt-2">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="category">Categoria</label>
+                <select name="category_id" class="custom-select @error('category_id') is-invalid @enderror">
+                    <option value="">- Nessuna categoria -</option>
+                    @foreach ($categories as $category)
+                        <option @if (old('category_id', $post->category_id) == $category->id) selected @endif value="{{ $category->id }}">
+                            {{ $category->name }}</option>
+                    @endforeach
+                </select>
+                @error('category_id')
+                    <div class="alert alert-danger mt-2">
+                        {{ $message }}
                     </div>
                 @enderror
             </div>
@@ -31,10 +44,8 @@
                 <label for="content">Contenuto</label>
                 <textarea rows="10" class="form-control @error('content') is-invalid @enderror" id="content" name="content">{{ old('content', $post->content) }}</textarea>
                 @error('title')
-                    <div class="mt-2">
-                        <span class="danger">
-                            {{ $message }}
-                        </span>
+                    <div class="alert alert-danger mt-2">
+                        {{ $message }}
                     </div>
                 @enderror
             </div>

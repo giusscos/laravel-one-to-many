@@ -16,11 +16,36 @@
             @csrf
             <div class="form-group">
                 <label for="title">Titolo</label>
-                <input type="text" class="form-control" id="title" name="title">
+                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
+                    value="{{ old('title') }}">
+                @error('title')
+                    <div class="alert alert-danger mt-2">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="category">Categoria</label>
+                <select name="category_id" class="custom-select @error('category_id') is-invalid @enderror">
+                    <option value="">- Nessuna categoria -</option>
+                    @foreach ($categories as $category)
+                        <option @if (old('category_id') == $category->id) selected @endif value="{{$category->id}}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+                @error('category_id')
+                    <div class="alert alert-danger mt-2">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="content">Contenuto</label>
-                <textarea rows="10" class="form-control" id="content" name="content"></textarea>
+                <textarea rows="10" class="form-control  @error('content') is-invalid @enderror" id="content" name="content">{{ old('content') }}</textarea>
+                @error('content')
+                    <div class="alert alert-danger mt-2">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary">Aggiungi</button>
         </form>
