@@ -48,7 +48,7 @@ class PostController extends Controller
             'category_id' => 'nullable|exists:categories,id',
         ]);
 
-        $params['slug'] = Str::slug($params['title']);
+        $params['slug'] = Post::getUniqueSlug($params['title']);
 
         $post = Post::create($params);
 
@@ -94,7 +94,7 @@ class PostController extends Controller
             'category_id' => 'nullable|exists:categories,id',
         ]);
         
-        $params['slug'] = Str::slug($params['title']);
+        $params['slug'] = Post::getUniqueSlug($params['title']);
         
         $post->update($params);
 
