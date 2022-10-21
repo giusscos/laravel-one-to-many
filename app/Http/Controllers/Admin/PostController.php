@@ -93,9 +93,9 @@ class PostController extends Controller
             'content' => 'required',
             'category_id' => 'nullable|exists:categories,id',
         ]);
-
+        
         $params['slug'] = Str::slug($params['title']);
-
+        
         $post->update($params);
 
         return redirect()->route('admin.posts.show', $post);
